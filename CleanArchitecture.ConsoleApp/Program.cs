@@ -2,17 +2,111 @@
 using CleanArchitecture.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Diagnostics.Metrics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters;
 
 StreamerDbContext dbContext = new();
 
-await TrackingAndNotTraking();
+await MultipleEntitiesQuery();
+//await AddNewDirectorWithVideo();
+//await AddNewActorWithVideo();
+//await AddNewStreamerWithVideoId();
+//await AddNewStreamerWithVideo();
+//await TrackingAndNotTraking();
 //await QueyLinq();
 //await QueryMethods();
 //await QueryFilter();
 //await AddNewRecods();
 //getStreaming();
+
+
+async Task MultipleEntitiesQuery()
+{
+    //var VideoWithActors = await dbContext!.Videos!.Include(q => q.Actores).FirstOrDefaultAsync(q => q.Id ==1);
+
+    //var Actores = await dbContext!.Actor!.Select(q => q.Nombre).ToListAsync();
+
+    var VideoWithDirector = dbContext!.Videos!.Where(q => q.Director != null)
+        .Include(q => q.Director).Select(q => new { Director_Mio = $"{q.Director.Nombre}  {q.Director.Apellido}", Movie = q.Nombre }  );
+
+    foreach ( var video in VideoWithDirector )
+    {
+        Console.WriteLine($"{video.Movie} - {video.Director_Mio}");
+    }
+}
+
+async Task AddNewDirectorWithVideo()
+{
+
+    var Actor = new Director 
+    { 
+        Nombre = "Lorenzo",
+        Apellido = "Basteri",
+        VideoId = 1
+    };
+
+    await dbContext.AddAsync(Actor);
+    await dbContext.SaveChangesAsync();
+
+}
+async Task AddNewActorWithVideo()
+{
+
+    var Actor = new Actor 
+    { 
+        Nombre = "Brad",
+        Apellido = "Pitt"
+    };
+
+    await dbContext.AddAsync(Actor);
+    await dbContext.SaveChangesAsync();
+
+    var VideoActor = new VideoActor
+    {
+        ActorId = Actor.Id,
+        VideoId = 1
+    
+    };
+
+    await dbContext.AddAsync(VideoActor);
+    await dbContext.SaveChangesAsync();
+
+}
+
+async Task AddNewStreamerWithVideoId() {
+
+
+    var BatmanForever = new Video
+    {
+        Nombre = "Batman Forever",
+        StreamerId = 4
+        
+    };
+
+    await dbContext.AddAsync(BatmanForever);
+    await dbContext.SaveChangesAsync();
+
+}
+
+async Task AddNewStreamerWithVideo() {
+
+    var Pantalla = new Streamer
+    {
+        Nombre = "Pantalla"
+    };
+
+    var HungerGame = new Video
+    {
+        Nombre = "Hunger Games",
+        Streamer = Pantalla
+        
+    };
+
+    await dbContext.AddAsync(HungerGame);
+    await dbContext.SaveChangesAsync();
+
+}
 
 
 async Task TrackingAndNotTraking()
@@ -21,7 +115,7 @@ async Task TrackingAndNotTraking()
     var streamerNoTracking = await dbContext!.Streamers!.AsNoTracking().FirstOrDefaultAsync(x=> x.Id == 2);
 
 
-    streamerWithTracking.Nombre = "Netflix Super";
+    streamerWithTracking.Nombre = "Disney Super";
     streamerNoTracking.Nombre = "Amazon Plus";
 
 
