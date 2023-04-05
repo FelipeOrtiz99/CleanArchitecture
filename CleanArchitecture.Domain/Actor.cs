@@ -9,7 +9,9 @@ namespace CleanArchitecture.Domain
         }  
 
         public string? Nombre { get; set; }
+
         public string? Apellido { get; set; }
+
         public virtual ICollection<Video> Videos { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace CleanArchitecture.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@$"Data Source = np:\\.\pipe\LOCALDB#224860BF\tsql\query; Initial Catalog = Streamer; Integrated Security = True")
+            optionsBuilder.UseSqlServer(@$"Data Source = localhost\SQLEXPRESS; Initial Catalog = Streamer; Integrated Security = True; TrustServerCertificate = True")
                 .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, Microsoft.Extensions.Logging.LogLevel.Information)
                 .EnableSensitiveDataLogging();
         }
@@ -26,12 +26,15 @@ namespace CleanArchitecture.Data
                 .HasMany(p => p.Actores)
                 .WithMany(t => t.Videos)
                 .UsingEntity<VideoActor>(
-                    pt => pt.HasKey(e => new { e.ActorId, e.VideoId })
+                   pt => pt.HasKey(e => new { e.ActorId, e.VideoId })
                 );
         }
 
         public DbSet<Streamer>? Streamers { get; set; }
+
         public DbSet<Video>? Videos { get; set; }
+
+        public DbSet<Actor>? Actor { get; set; }
 
     }
 
