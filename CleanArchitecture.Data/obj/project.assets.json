@@ -1156,19 +1156,6 @@
           }
         }
       },
-      "CleanArchitecture.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CleanArchitecture.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CleanArchitecture.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CleanArchitecture.Application.dll": {}
-        }
-      },
       "CleanArchitecture.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3524,11 +3511,6 @@
         "version.txt"
       ]
     },
-    "CleanArchitecture.Application/1.0.0": {
-      "type": "project",
-      "path": "../CleanArchitecture.Application/CleanArchitecture.Application.csproj",
-      "msbuildProject": "../CleanArchitecture.Application/CleanArchitecture.Application.csproj"
-    },
     "CleanArchitecture.Domain/1.0.0": {
       "type": "project",
       "path": "../CleanArchitecture.Domain/CleanArchitecture.Domain.csproj",
@@ -3537,29 +3519,32 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "CleanArchitecture.Application >= 1.0.0",
+      "CleanArchitecture.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\andre\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\AndresFelipeOrtizMur\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Data\\CleanArchitecture.Infrastructure.csproj",
-      "projectName": "CleanArchitecture.Infrastructure",
-      "projectPath": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Data\\CleanArchitecture.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "projectUniqueName": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Data\\CleanArchitecture.Data.csproj",
+      "projectName": "CleanArchitecture.Data",
+      "projectPath": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Data\\CleanArchitecture.Data.csproj",
+      "packagesPath": "C:\\Users\\AndresFelipeOrtizMur\\.nuget\\packages\\",
       "outputPath": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AndresFelipeOrtizMur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -3568,17 +3553,19 @@
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\DevExpress 20.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.devexpress.com/P8EYFrTD2ZAMWWoSydp47xSO5v2AETai8Glkyz7RhPH4EA67Ah/api": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Application\\CleanArchitecture.Application.csproj": {
-              "projectPath": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Application\\CleanArchitecture.Application.csproj"
+            "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj": {
+              "projectPath": "D:\\Projects\\CleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj"
             }
           }
         }
@@ -3620,7 +3607,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
