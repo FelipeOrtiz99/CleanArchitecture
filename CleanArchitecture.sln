@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2BA6BEE6-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3D7CE0E6-C8D5-4F00-A7A5-D2C0AF497350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.API", "CleanArchitecture.API\CleanArchitecture.API.csproj", "{84D6393F-6D11-4FDD-A80B-9A373E7323F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.API", "CleanArchitecture.API\CleanArchitecture.API.csproj", "{84D6393F-6D11-4FDD-A80B-9A373E7323F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Application", "CleanArchitecture.Application\CleanArchitecture.Application.csproj", "{3C63B0BD-224E-4674-A640-14C71289A644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{84D6393F-6D11-4FDD-A80B-9A373E7323F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84D6393F-6D11-4FDD-A80B-9A373E7323F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84D6393F-6D11-4FDD-A80B-9A373E7323F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C63B0BD-224E-4674-A640-14C71289A644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C63B0BD-224E-4674-A640-14C71289A644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C63B0BD-224E-4674-A640-14C71289A644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C63B0BD-224E-4674-A640-14C71289A644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{2BA6BEE6-C67C-4895-B678-E054FB588C93} = {864CBD09-2E06-454C-AEEE-64D1A4E53144}
 		{3D7CE0E6-C8D5-4F00-A7A5-D2C0AF497350} = {864CBD09-2E06-454C-AEEE-64D1A4E53144}
 		{84D6393F-6D11-4FDD-A80B-9A373E7323F9} = {EB12D572-6505-42D5-A1FB-0F17B62794AB}
+		{3C63B0BD-224E-4674-A640-14C71289A644} = {2BA6BEE6-C67C-4895-B678-E054FB588C93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {054A609C-384C-4181-8574-4D0CAA356405}
