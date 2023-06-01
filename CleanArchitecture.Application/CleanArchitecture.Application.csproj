@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Directors\Commands\DeleteDirector\" />
+    <Folder Include="Features\Directors\Commands\UpdateDirector\" />
+    <Folder Include="Features\Directors\Queries\" />
     <Folder Include="Features\Streamers\Queries\" />
     <Folder Include="Features\Videos\Commands\" />
   </ItemGroup>
@@ -21,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.Data\CleanArchitecture.Data.csproj" />
+    <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
   </ItemGroup>
 
 </Project>

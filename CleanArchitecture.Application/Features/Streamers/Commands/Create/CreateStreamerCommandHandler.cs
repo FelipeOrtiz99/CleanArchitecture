@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using CleanArchitecture.Application.Contracts.Infrastruture;
 using CleanArchitecture.Application.Contracts.Persistence;
 using CleanArchitecture.Application.Models;
 using CleanArchitecture.Domain;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace CleanArchitecture.Application.Features.Streamers.Commands.Create
@@ -13,14 +11,16 @@ namespace CleanArchitecture.Application.Features.Streamers.Commands.Create
     public class CreateStreamerCommandHandler : IRequestHandler<CreateStreamerCommand, int>
     {
 
-        private readonly IStreamerRepository _streamerRepository;
+        //private readonly IStreamerRepository _streamerRepository;
+        private readonly IUnitOfWork _unitofWork;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly ILogger<CreateStreamerCommandHandler> _logger;
 
-        public CreateStreamerCommandHandler(IStreamerRepository streamerRepository, IMapper mapper, IEmailService emailService, ILogger<CreateStreamerCommandHandler> logger)
+        public CreateStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IEmailService emailService, ILogger<CreateStreamerCommandHandler> logger)
         {
-            _streamerRepository = streamerRepository;
+            //_streamerRepository = streamerRepository;
+            _unitofWork = unitOfWork;
             _mapper = mapper;
             _emailService = emailService;
             _logger = logger;
@@ -29,13 +29,22 @@ namespace CleanArchitecture.Application.Features.Streamers.Commands.Create
         public async Task<int> Handle(CreateStreamerCommand request, CancellationToken cancellationToken)
         {
             var streamerEntity = _mapper.Map<Streamer>(request);
-            var newStreamer = await _streamerRepository.AddAsync(streamerEntity);
+            //var newStreamer = await _streamerRepository.AddAsync(streamerEntity);
 
-            _logger.LogInformation($"Streamer {newStreamer.Nombre} fue creado exitosamente");
+            _unitofWork.StreamerRepository.AddEntity(streamerEntity);
 
-            await SendEmail(newStreamer);
+            var  result = await _unitofWork.Complete();
 
-            return newStreamer.Id;
+            if (result <= 0)
+            {
+                throw new Exception($"No se pudo insertar el record de streamer");
+            }
+
+            _logger.LogInformation($"Streamer {streamerEntity.Nombre} fue creado exitosamente");
+
+            await SendEmail(streamerEntity);
+
+            return streamerEntity.Id;
 
         }
 
